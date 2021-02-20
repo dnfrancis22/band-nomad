@@ -56,18 +56,21 @@ const NavBar = () => {
   }
   return (
     <nav>
-    <div className="nav-wrapper">
-      <div className="container-fluid" id="navContainer">
-     
-      <Link to="/" className="brand-logo center blue-text text-darken-2"><img  id="navImage" src={logoBand100}
-      className="image-fluid" alt="band nomad logo"/></Link>  
-      <Link to="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
- 
-    <ul id="link-align" className="right hide-on-med-and-down">
-    <li><NavLink 
-    to="/" activeStyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}
-    >Home</NavLink></li>
-            
+      <div className="nav-wrapper">
+        <div className="container-fluid" id="navContainer">
+          <Link to="/" className="brand-logo center blue-text text-darken-2">
+            <img
+              id="navImage"
+              src={logoBand100}
+              className="image-fluid"
+              alt="band nomad logo"
+            />
+          </Link>
+          <Link to="#" data-target="mobile-demo" className="sidenav-trigger">
+            <i className="material-icons">menu</i>
+          </Link>
+
+          <ul id="link-align" className="right hide-on-med-and-down">
             <li>
               <NavLink
                 to="/"
@@ -79,18 +82,10 @@ const NavBar = () => {
 
             <li>
               <NavLink
-                to="/create"
-                activeStyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}
-              >
-                Sign Up
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
                 to="/contact"
                 activeStyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}
               >
-                Contact
+                Contact Us
               </NavLink>
             </li>
             <li>
@@ -114,20 +109,13 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/Create"
-            activeStyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}
-          >
-            Sign Up
-          </NavLink>
-        </li>
+
         <li>
           <NavLink
             to="/Contact"
             activeStyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}
           >
-            Contact
+            Contact Us
           </NavLink>
         </li>
         <li>
