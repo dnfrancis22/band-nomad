@@ -1,4 +1,4 @@
-// const { cloudinary } = require("./utils/cloudinary");
+const { cloudinary } = require("./utils/cloudinary");
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -64,6 +64,7 @@ app.get("/api/config", (req, res) => {
     success: true,
   });
 });
+
 // app.post("/api/upload", async (req, res) => {
 
 //   const fileStr = req.body.data;
@@ -77,21 +78,21 @@ app.get("/api/config", (req, res) => {
 
 
 // });
-// app.post("/api/upload", async (req, res) => {
-//   try {
-//     const fileStr = req.body.data;
-//     const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-//       folder: "band_nomad",
-//     });
-//     console.log(uploadResponse);
-//     let secureURL = uploadResponse.secure_url;
-//     res.json({ msg: "yaya", url: secureURL });
-//     console.log(secureURL);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ err: "Something went wrong" });
-//   }
-// });
+app.post("/api/upload", async (req, res) => {
+  try {
+    const fileStr = req.body.data;
+    const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+      folder: "band_nomad",
+    });
+    console.log(uploadResponse);
+    let secureURL = uploadResponse.secure_url;
+    res.json({ msg: "yaya", url: secureURL });
+    console.log(secureURL);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ err: "Something went wrong" });
+  }
+});
 // app.get('/api/images', async (req, res) => {
 //   const { resources } = await cloudinary.search
 //       .expression('folder:band_nomad')
