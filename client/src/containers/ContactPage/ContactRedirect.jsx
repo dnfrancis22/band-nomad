@@ -5,7 +5,7 @@ const ContactRedirect = () => {
   const history = useHistory();
   useEffect(() => {
     window.setTimeout(() => history.push("/"), 3000);
-  }, []);
+  }, [history]);
 
   return (
     <>

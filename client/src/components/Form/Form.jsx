@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Upload from "../Upload/Upload";
+
 const Form = ({ buttonText, handleFormSubmit }) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -10,9 +12,13 @@ const Form = ({ buttonText, handleFormSubmit }) => {
   const [email, setEmail] = useState("");
   const [genre, setGenre] = useState("");
   const [instrument, setInstrument] = useState("");
+  const [fileInputState, setFileInputState] = useState("");
+  const [previewSource, setPreviewSource] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
   const [imageURL, setImageURL] = useState("");
   const [bio, setBio] = useState("");
   const { id } = useParams();
+
   useEffect(() => {
     console.log(id);
     if (id) {
@@ -48,6 +54,49 @@ const Form = ({ buttonText, handleFormSubmit }) => {
         });
     }
   }, [id]);
+
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFile(file);
+    setFileInputState(e.target.value);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
+  const handleSubmitFile = (e) => {
+    e.preventDefault();
+    if (!selectedFile) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      uploadImage(reader.result);
+    };
+    reader.onerror = () => {
+      console.error("error");
+    };
+  };
+
+  const uploadImage = async (base64EncodedImage) => {
+    let response = await fetch("/api/upload", {
+      method: "POST",
+      body: JSON.stringify({ data: base64EncodedImage }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setImageURL(data.url);
+      });
+    setFileInputState("");
+    setPreviewSource("");
+  };
+
   return (
     <div>
       <form
@@ -195,20 +244,6 @@ const Form = ({ buttonText, handleFormSubmit }) => {
             </label>
           </div>
         </div>
-        {/* <div className="row">
-          <div className="input-field col s12">
-            <input
-              id="city"
-              type="text"
-              name="city"
-              value={city}
-              onChange={(e) => {
-                setCity(e.target.value);
-              }}
-            />
-            <label htmlFor="City">City</label>
-          </div>
-        </div> */}
         <div className="row">
           <div className="col s12">
             <select
@@ -232,27 +267,46 @@ const Form = ({ buttonText, handleFormSubmit }) => {
           </div>
         </div>
         <div className="row">
-          <div className="input-field col s12">
-            <input
-              style={{
-                borderBottom: "2px dashed hotpink",
-              }}
+          <div className="col s12">
+            <h6>Upload an Image</h6>
+            <form onSubmit={handleSubmitFile}>
+              <input
+                id="imageURL"
+                type="file"
+                name="imageURL"
+                value={fileInputState}
+                onChange={handleFileInputChange}
+              />
+              <button
+                className="btn waves-effect waves-light"
+                onClick={handleSubmitFile}
+              >
+                upload
+              </button>
+              {previewSource && (
+                <img
+                  src={previewSource}
+                  alt="chosen"
+                  style={{ height: "100px" }}
+                />
+              )}
+            </form>
+            {/* <Upload
               id="imageURL"
-              type="text"
               name="imageURL"
               value={imageURL}
               onChange={(e) => {
                 setImageURL(e.target.value);
               }}
-            />
-            <label
+            /> */}
+            {/* <label
               htmlFor="imageURL"
               style={{
                 color: "black",
               }}
             >
               ImageURL
-            </label>
+            </label> */}
           </div>
         </div>
         <div className="row">

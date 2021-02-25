@@ -30,6 +30,7 @@ const ContactPage = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  // eslint-disable-next-line
   const [musician, setMusician] = useState([]);
 
   const { id } = useParams();

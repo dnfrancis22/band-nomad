@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // import axios from "axios";
 // import { json } from "express";
 
-const Upload = (props) => {
+const Upload = () => {
   const [fileInputState, setFileInputState] = useState("");
   const [previewSource, setPreviewSource] = useState("");
   const [selectedFile, setSelectedFile] = useState();
@@ -46,31 +46,14 @@ const Upload = (props) => {
     .then(response => response.json())
     .then(data=>{
         setImageURL(data.url);
-
     });
-    //console.log(response.json());
-
     setFileInputState("");
     setPreviewSource("");
   };
-
-  // const loadImages = () => {
-  //   axios
-  //     .get(`api/upload/secureURL`)
-  //     .then((response) => {
-  //       console.log(response);
-  //       setImageIds(response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   return (
     <div className="container">
       <div className="row">
         <div className="input-field col s12">
-          {/* <label htmlFor="Image URL">Image URL</label> */}
           <h6>Upload an Image</h6>
           <form onSubmit={handleSubmitFile}>
             <input
@@ -80,17 +63,9 @@ const Upload = (props) => {
               value={fileInputState}
               onChange={handleFileInputChange}
             />
-            <button className="btn waves-effect waves-light" type="submit">
+            <button className="btn waves-effect waves-light" onClick={handleSubmitFile}>
               upload
             </button>
-            {/* <button
-              className="btn waves-effect waves-light"
-              onClick={() => {
-                loadImages();
-              }}
-            >
-              preview
-            </button> */}
             {previewSource && (
               <img
                 src={previewSource}
@@ -99,21 +74,6 @@ const Upload = (props) => {
               />
             )}
           </form>
-          <div>
-            <h1 className="title">Cloudinary Gallery</h1>
-            <div>
-              {/* {imageIds &&
-                imageIds.map((imageId, index) => (
-                  <Image
-                    key={index}
-                    cloudName="denniscloud"
-                    publicId={imageId}
-                    width="300"
-                    crop="scale"
-                  />
-                ))} */}
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -86,6 +86,7 @@ const InProfile = () => {
                   onClick={() => {
                     deleteProfile(musician._id);
                   }}
+                  // eslint-disable-next-line
                   style={{ backgroundColor: "#004AAD", color: "ffff" }}
                 >
                   delete profile
