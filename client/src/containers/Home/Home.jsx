@@ -23,9 +23,7 @@ const Home = () => {
     if (city) {
       baseURL = baseURL + `city=${city}&`;
     }
-    // if (city) {
-    //   baseURL = baseURL + `city=${city}&`;
-    // }
+
     console.log(baseURL);
     axios
       .get(baseURL)
@@ -85,7 +83,9 @@ const Home = () => {
                   >
                     Getting Started
                   </h1>
-                  <li id="startList" style={{ listStyleType: "disc" }}>Start a band</li>
+                  <li id="startList" style={{ listStyleType: "disc" }}>
+                    Start a band
+                  </li>
                   <li id="startList" style={{ listStyleType: "disc" }}>
                     Add a new band member
                   </li>
@@ -93,6 +93,10 @@ const Home = () => {
                     Connect with local musicians
                   </li>
                 </ul>
+              </div>
+            </div>
+            <div className="row" style={{ marginBottom: 0 }}>
+              <div className="input-field col s12">
                 <select
                   id="instrument"
                   value={instrument}
@@ -112,7 +116,7 @@ const Home = () => {
               </div>
             </div>
             <div className="row" style={{ marginBottom: 0 }}>
-              <div className="col s12">
+              <div className="input-field col s12">
                 <select
                   placeholder="Genre"
                   id="genre"
@@ -135,7 +139,7 @@ const Home = () => {
               </div>
             </div>
             <div className="row">
-              <div className="col s12">
+              <div className="input-field col s12">
                 <select
                   placeholder="City"
                   id="city"
@@ -160,6 +164,7 @@ const Home = () => {
             </div>
             <button
               onClick={handleFormSubmit}
+              type="submit"
               className="btn waves-effect"
               style={{ backgroundColor: "#004AAD", color: "ffff" }}
             >

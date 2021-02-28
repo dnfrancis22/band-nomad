@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Upload from "../Upload/Upload";
 
 const Form = ({ buttonText, handleFormSubmit }) => {
   const [name, setName] = useState("");
@@ -84,6 +83,7 @@ const Form = ({ buttonText, handleFormSubmit }) => {
   };
 
   const uploadImage = async (base64EncodedImage) => {
+    // eslint-disable-next-line
     let response = await fetch("/api/upload", {
       method: "POST",
       body: JSON.stringify({ data: base64EncodedImage }),
@@ -245,71 +245,6 @@ const Form = ({ buttonText, handleFormSubmit }) => {
           </div>
         </div>
         <div className="row">
-          <div className="col s12">
-            <select
-              id="city"
-              value={city}
-              onChange={(e) => {
-                setCity(e.target.value);
-              }}
-              className="browser-default"
-            >
-              <option value="" disabled selected>
-                Choose your city
-              </option>
-              <option value="Atlanta">Atlanta</option>
-              <option value="Midtown">Midtown</option>
-              <option value="Buckhead">Buckhead</option>
-              <option value="Decatur">Decatur</option>
-              <option value="Alpharetta">Alpharetta</option>
-              <option value="Marrietta">Marrietta</option>
-            </select>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col s12">
-            <h6>Upload an Image</h6>
-            <form onSubmit={handleSubmitFile}>
-              <input
-                id="imageURL"
-                type="file"
-                name="imageURL"
-                value={fileInputState}
-                onChange={handleFileInputChange}
-              />
-              <button
-                className="btn waves-effect waves-light"
-                onClick={handleSubmitFile}
-              >
-                upload
-              </button>
-              {previewSource && (
-                <img
-                  src={previewSource}
-                  alt="chosen"
-                  style={{ height: "100px" }}
-                />
-              )}
-            </form>
-            {/* <Upload
-              id="imageURL"
-              name="imageURL"
-              value={imageURL}
-              onChange={(e) => {
-                setImageURL(e.target.value);
-              }}
-            /> */}
-            {/* <label
-              htmlFor="imageURL"
-              style={{
-                color: "black",
-              }}
-            >
-              ImageURL
-            </label> */}
-          </div>
-        </div>
-        <div className="row">
           <div className="input-field col s12">
             <input
               style={{
@@ -331,6 +266,72 @@ const Form = ({ buttonText, handleFormSubmit }) => {
             >
               Bio
             </label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s12">
+            <form onSubmit={handleSubmitFile}>
+              <div className="file-field input-field">
+                <div className="btn" style={{ backgroundColor: "#004AAD", color: "ffff" }}>
+                  <span>Choose your profile pic</span>
+                  <input
+                    id="imageURL"
+                    type="file"
+                    name="imageURL"
+                    value={fileInputState}
+                    onChange={handleFileInputChange}
+                  />
+                </div>
+                <div className="file-path-wrapper">
+                  <input className="file-path validate" type="text" style={{
+                borderBottom: "2px dashed hotpink",
+              }}/>
+                </div>
+              </div>
+              {/* <input
+                id="imageURL"
+                type="file"
+                name="imageURL"
+                value={fileInputState}
+                onChange={handleFileInputChange}
+              /> */}
+              {previewSource && (
+                <img
+                  src={previewSource}
+                  alt="chosen"
+                  style={{ height: "100px", float: "left" }}
+                />
+              )}
+              <button
+                className="btn waves-effect waves-light"
+                style={{ backgroundColor: "#004AAD", color: "ffff", float: "left"  }}
+                onClick={handleSubmitFile}
+              >
+                upload
+              </button>
+            </form>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col s12">
+            <select
+              id="city"
+              value={city}
+              onChange={(e) => {
+                setCity(e.target.value);
+              }}
+              className="browser-default"
+            >
+              <option value="" disabled selected>
+                Choose your city
+              </option>
+              <option value="Atlanta">Atlanta</option>
+              <option value="Midtown">Midtown</option>
+              <option value="Buckhead">Buckhead</option>
+              <option value="Decatur">Decatur</option>
+              <option value="Alpharetta">Alpharetta</option>
+              <option value="Marrietta">Marrietta</option>
+            </select>
           </div>
         </div>
         <div className="row">
