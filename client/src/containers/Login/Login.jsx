@@ -21,7 +21,7 @@ function LogIn() {
       .then((response) => {
         console.log(response.data);
         setCookie("username", response.data.username);
-        history.push("/");
+        history.push("/home");
       })
       .catch((err) => {
         console.log(err);

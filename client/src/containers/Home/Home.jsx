@@ -39,7 +39,7 @@ const Home = () => {
   let musicianRows =
     musicians.length > 0
       ? musicians.map((musician) => (
-          <tr className="bg-colorizinger" id={musician._id}>
+          <tr className="bg-colorizinger" key={musician._id}>
             <td style={{ maxWidth: "50px" }}>
               <img
                 src={musician.imageURL}
@@ -105,9 +105,7 @@ const Home = () => {
                   }}
                   className="browser-default"
                 >
-                  <option value="" disabled selected>
-                    Musician Instrument
-                  </option>
+                  <option value="">Musician Instrument</option>
                   <option value="bass">Bass Player</option>
                   <option value="guitar">Guitar Player</option>
                   <option value="drums">Drummer</option>
@@ -127,9 +125,7 @@ const Home = () => {
                   }}
                   className="browser-default"
                 >
-                  <option value="" disabled selected>
-                    Musician Genre
-                  </option>
+                  <option value="">Musician Genre</option>
                   <option value="blues">Rhythm and Blues</option>
                   <option value="country">Country Music</option>
                   <option value="jazz">Jazz Music</option>
@@ -150,9 +146,7 @@ const Home = () => {
                   }}
                   className="browser-default"
                 >
-                  <option value="" disabled selected>
-                    City
-                  </option>
+                  <option value="">City</option>
                   <option value="Atlanta">Atlanta</option>
                   <option value="Midtown">Midtown</option>
                   <option value="Buckhead">Buckhead</option>
@@ -194,7 +188,9 @@ const Home = () => {
                         <th>City</th>
                       </tr>
                     </thead>
-                    <tbody>{musicianRows}</tbody>
+                    <tbody>
+                      <tr>{musicianRows}</tr>
+                    </tbody>
                   </table>
                 </div>
               </div>

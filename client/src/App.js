@@ -11,6 +11,7 @@ import { useCookies } from "react-cookie";
 import ContactRedirect from "./containers/ContactPage/ContactRedirect";
 
 function ConditionalNavBar() {
+  // eslint-disable-next-line
   const [cookies, setCookie] = useCookies(["username"]);
   if (cookies.username === "") {
     return null;
@@ -20,6 +21,7 @@ function ConditionalNavBar() {
 }
 
 function ConditionalLogin() {
+  // eslint-disable-next-line
   const [cookies, setCookie] = useCookies(["username"]);
   if (cookies.username === "") {
     return (
@@ -31,7 +33,8 @@ function ConditionalLogin() {
   } else {
     return (
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Login} />
+        <Route exact path="/home" component={Home} />
         <Route exact path="/create" component={Create} />
         <Route exact path="/contact/" component={ContactPage} />
         <Route exact path="/contact/:id" component={ContactPage} />
