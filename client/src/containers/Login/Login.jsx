@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
-import logoBand100 from "../../assets/images/nomadLogo100.jpg";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 function LogIn() {
+  // eslint-disable-next-line
   const [cookies, setCookie] = useCookies(["username"]);
   const history = useHistory();
   const [email, setEmail] = useState("");
@@ -21,7 +21,7 @@ function LogIn() {
       .then((response) => {
         console.log(response.data);
         setCookie("username", response.data.username);
-        history.push("/");
+        history.push("/home");
       })
       .catch((err) => {
         console.log(err);

@@ -1,4 +1,4 @@
-// const { cloudinary } = require("./utils/cloudinary");
+const { cloudinary } = require("./utils/cloudinary");
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -64,55 +64,22 @@ app.get("/api/config", (req, res) => {
     success: true,
   });
 });
-// app.post("/api/upload", async (req, res) => {
 
-//   const fileStr = req.body.data;
-//   const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-//     folder: "band_nomad",
-//   });
-//   console.log(uploadResponse);
-//   let secureURL = uploadResponse.secure_url;
-//   console.log(secureURL);
-//   res.json(secureURL);
-
-
-// });
-// app.post("/api/upload", async (req, res) => {
-//   try {
-//     const fileStr = req.body.data;
-//     const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-//       folder: "band_nomad",
-//     });
-//     console.log(uploadResponse);
-//     let secureURL = uploadResponse.secure_url;
-//     res.json({ msg: "yaya", url: secureURL });
-//     console.log(secureURL);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ err: "Something went wrong" });
-//   }
-// });
-// app.get('/api/images', async (req, res) => {
-//   const { resources } = await cloudinary.search
-//       .expression('folder:band_nomad')
-//       .sort_by('secure_url', 'desc')
-//       .max_results(30)
-//       .execute();
-
-//   const secure_url = resources.map((file) => file.secure_url);
-//   res.send(secure_url);
-// });
-
-// app.get("/api/images", async (req, res) => {
-//   const { resources } = await cloudinary.search
-//     .expression("folder:band_nomad")
-//     .sort_by("public_id", "desc")
-//     .max_results(30)
-//     .execute();
-
-//   const publicIds = resources.map((file) => file.public_id);
-//   res.send(publicIds);
-// });
+app.post("/api/upload", async (req, res) => {
+  try {
+    const fileStr = req.body.data;
+    const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+      folder: "band_nomad",
+    });
+    console.log(uploadResponse);
+    let secureURL = uploadResponse.secure_url;
+    res.json({ msg: "yaya", url: secureURL });
+    console.log(secureURL);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ err: "Something went wrong" });
+  }
+});
 
 app.get("/api/data/session", (req, res) => {
   console.log("===== user!! =====");
@@ -121,11 +88,13 @@ app.get("/api/data/session", (req, res) => {
     res.json({ user: req.session.passport.user._id });
   }
 });
+
 app.use("/api/musician", MusicianController);
 
 app.use("/api/contact", ContactController);
 
 app.use("/api/login", LoginController);
+
 app.use("/api/logout", LogoutController);
 
 app.get("*", (req, res) => {

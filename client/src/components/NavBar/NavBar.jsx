@@ -8,6 +8,7 @@ import { useCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
 
 const NavBar = () => {
+  // eslint-disable-next-line
   const [cookies, setCookie] = useCookies(["username"]);
   
   useEffect(() => {
@@ -47,12 +48,12 @@ const NavBar = () => {
       );
     } else {
       return (
-        <a
+        <div
           onClick={handleClick}
           activestyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}
         >
           Logout
-        </a>
+          </div>
       );
     }
   }
@@ -73,7 +74,7 @@ const NavBar = () => {
             
             <li>
               <NavLink
-                to="/"
+                to="/home"
                 activestyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}
               >
                 Home
@@ -101,7 +102,7 @@ const NavBar = () => {
             </li>
             <li>
               <NavLink
-                to="/"
+                to="/home"
                 activestyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}
               >
                 My Account
@@ -113,7 +114,7 @@ const NavBar = () => {
 
       <ul className="sidenav" id="mobile-demo">
         <li>
-          <NavLink to="/" activestyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}>
+          <NavLink to="/home" activestyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}>
             Home
           </NavLink>
         </li>
@@ -138,7 +139,7 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink
-            to="/"
+            to="/home"
             activestyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}
           >
             My Account

@@ -23,9 +23,7 @@ const Home = () => {
     if (city) {
       baseURL = baseURL + `city=${city}&`;
     }
-    // if (city) {
-    //   baseURL = baseURL + `city=${city}&`;
-    // }
+
     console.log(baseURL);
     axios
       .get(baseURL)
@@ -41,7 +39,7 @@ const Home = () => {
   let musicianRows =
     musicians.length > 0
       ? musicians.map((musician) => (
-          <tr className="bg-colorizinger" id={musician._id}>
+          <tr className="bg-colorizinger" key={musician._id}>
             <td style={{ maxWidth: "50px" }}>
               <img
                 src={musician.imageURL}
@@ -85,7 +83,9 @@ const Home = () => {
                   >
                     Getting Started
                   </h1>
-                  <li id="startList" style={{ listStyleType: "disc" }}>Start a band</li>
+                  <li id="startList" style={{ listStyleType: "disc" }}>
+                    Start a band
+                  </li>
                   <li id="startList" style={{ listStyleType: "disc" }}>
                     Add a new band member
                   </li>
@@ -93,6 +93,10 @@ const Home = () => {
                     Connect with local musicians
                   </li>
                 </ul>
+              </div>
+            </div>
+            <div className="row" style={{ marginBottom: 0 }}>
+              <div className="input-field col s12">
                 <select
                   id="instrument"
                   value={instrument}
@@ -101,9 +105,7 @@ const Home = () => {
                   }}
                   className="browser-default"
                 >
-                  <option value="" disabled selected>
-                    Musician Instrument
-                  </option>
+                  <option value="">Musician Instrument</option>
                   <option value="bass">Bass Player</option>
                   <option value="guitar">Guitar Player</option>
                   <option value="drums">Drummer</option>
@@ -112,7 +114,7 @@ const Home = () => {
               </div>
             </div>
             <div className="row" style={{ marginBottom: 0 }}>
-              <div className="col s12">
+              <div className="input-field col s12">
                 <select
                   placeholder="Genre"
                   id="genre"
@@ -123,9 +125,7 @@ const Home = () => {
                   }}
                   className="browser-default"
                 >
-                  <option value="" disabled selected>
-                    Musician Genre
-                  </option>
+                  <option value="">Musician Genre</option>
                   <option value="blues">Rhythm and Blues</option>
                   <option value="country">Country Music</option>
                   <option value="jazz">Jazz Music</option>
@@ -135,7 +135,7 @@ const Home = () => {
               </div>
             </div>
             <div className="row">
-              <div className="col s12">
+              <div className="input-field col s12">
                 <select
                   placeholder="City"
                   id="city"
@@ -146,9 +146,7 @@ const Home = () => {
                   }}
                   className="browser-default"
                 >
-                  <option value="" disabled selected>
-                    City
-                  </option>
+                  <option value="">City</option>
                   <option value="Atlanta">Atlanta</option>
                   <option value="Midtown">Midtown</option>
                   <option value="Buckhead">Buckhead</option>
@@ -160,6 +158,7 @@ const Home = () => {
             </div>
             <button
               onClick={handleFormSubmit}
+              type="submit"
               className="btn waves-effect"
               style={{ backgroundColor: "#004AAD", color: "ffff" }}
             >
@@ -189,7 +188,9 @@ const Home = () => {
                         <th>City</th>
                       </tr>
                     </thead>
-                    <tbody>{musicianRows}</tbody>
+                    <tbody>
+                      <tr>{musicianRows}</tr>
+                    </tbody>
                   </table>
                 </div>
               </div>

@@ -6,6 +6,7 @@ import { useCookies } from "react-cookie";
 
 const CreateProfile = () => {
   const history = useHistory();
+  // eslint-disable-next-line
   const [cookies, setCookie] = useCookies(["username"]);
 
   const handleFormSubmit = (e, musicianData) => {
