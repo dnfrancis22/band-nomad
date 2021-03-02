@@ -5,6 +5,7 @@ import Create from "./containers/CreateProfile/CreateProfile";
 import Login from "./containers/Login/Login";
 import Home from "./containers/Home/Home";
 import InProfile from "./containers/InProfile/InProfile";
+import Profile from "./containers/Profile/Profile";
 import Update from "./containers/UpdateProfile/UpdateProfile";
 // import Footer from "./components/Footer/Footer";
 import { useCookies } from "react-cookie";
@@ -42,6 +43,7 @@ function ConditionalLogin() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/update" component={Update} />
         <Route path="/inProfile/:id" component={InProfile} />
+        <Route exact path="/Profile/:id" component={Profile} />
         <Route exact path="/update/:id" component={Update} />
       </Switch>
     );
