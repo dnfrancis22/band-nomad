@@ -53,7 +53,7 @@ const Home = () => {
             <td style={{ maxWidth: "50px" }}>{musician.city}</td>
             <td>
               {" "}
-              <Link to={`/inProfile/${musician._id}`}>
+              <Link to={`/Profile/${musician._id}`}>
                 <button
                   className="btn waves-effect"
                   style={{ backgroundColor: "#004AAD", color: "ffff" }}
@@ -188,8 +188,7 @@ const Home = () => {
                         <th>City</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>{musicianRows}</tr>
+                    <tbody>{musicianRows}
                     </tbody>
                   </table>
                 </div>
