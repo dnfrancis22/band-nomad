@@ -164,6 +164,20 @@ const Home = () => {
             >
               Search Profiles
             </button>
+            <button
+              onClick={() => {
+                setCity("");
+                setGenre("");
+                setInstrument("");
+
+              }}
+              type="submit"
+              className="btn waves-effect"
+              style={{ backgroundColor: "#004AAD", color: "ffff" }}
+            >
+              Reset
+            </button>
+
             <div
               className="container"
               style={{
@@ -188,8 +202,7 @@ const Home = () => {
                         <th>City</th>
                       </tr>
                     </thead>
-                    <tbody>{musicianRows}
-                    </tbody>
+                    <tbody>{musicianRows}</tbody>
                   </table>
                 </div>
               </div>
@@ -197,11 +210,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* <img
-        id="hero"
-        src={emptyStage}
-        alt="empty stage with guitar drum an keyboards signifying find your band"
-      /> */}
     </>
   );
 };
