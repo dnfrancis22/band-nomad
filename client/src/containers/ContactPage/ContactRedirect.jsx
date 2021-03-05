@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 const ContactRedirect = () => {
   const history = useHistory();
   useEffect(() => {
-    window.setTimeout(() => history.push("/"), 3000);
+    window.setTimeout(() => history.push("/home"), 3000);
   }, [history]);
 
   return (

@@ -80,7 +80,7 @@ const InProfile = () => {
                   update profile
                 </button>
               </Link>
-              <Link to={"/"}>
+              <Link to={"/home"}>
                 <button
                   className="btn waves-effect waves-light" style={{ backgroundColor: "#004AAD", color: "ffff" }}
                   onClick={() => {
