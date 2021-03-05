@@ -40,7 +40,7 @@ const NavBar = () => {
     if (cookies.username === "") {
       return (
         <NavLink
-          to="/login"
+          to="/"
           activestyle={{ backgroundColor: "rgba(0,0,0,0.1)" }}
         >
           Login
