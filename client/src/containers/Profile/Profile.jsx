@@ -24,17 +24,6 @@ const InProfile = () => {
         console.log(err);
       });
   };
-  const deleteProfile = (id) => {
-    axios
-      .delete(`/api/musician/${id}`)
-      .then(() => {
-        getInProfile();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div>
       <div>
