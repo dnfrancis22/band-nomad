@@ -63,7 +63,7 @@ const NavBar = () => {
     <div className="nav-wrapper">
       <div className="container-fluid" id="navContainer">
      
-      <Link to="/" className="brand-logo center blue-text text-darken-2"><img  id="navImage" src={logoBand100}
+      <Link to="/home" className="brand-logo center blue-text text-darken-2"><img  id="navImage" src={logoBand100}
       className="image-fluid" alt="band nomad logo"/></Link>  
       <Link to="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
  
