@@ -39,5 +39,5 @@ Bands- As a band I want an app that makes it easy for us to find new and replace
   
   ## Questions
   If you have any questions please contact any one of the Band Nomad Team members by email: 
-  [Scott-Wells](scottpwells@gmail.com) [Tara-Martin](martin.tara117@gmail.com) [Dennis-Francis](dnfrancis22@gmail.com)
+  scottpwells@gmail.com, martin.tara117@gmail.com, dnfrancis22@gmail.com
 
